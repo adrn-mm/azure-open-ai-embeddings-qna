@@ -15,8 +15,8 @@ col1, col2, col3 = st.columns([1,2,1])
 with col1:
     st.image('logo_mlpt.png')
 
-names = ["Adrian Maulana Muhammad"]
-usernames = ["adrnmm"]
+names = ["Admin"]
+usernames = ["admin"]
 
 file_path = Path(__file__).parent / "hashed_pw.pkl"
 with file_path.open("rb") as file:
