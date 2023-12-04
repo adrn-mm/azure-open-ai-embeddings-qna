@@ -32,16 +32,29 @@ If you want to use a Chat based deployment (gpt-35-turbo or gpt-4-32k or gpt-4),
 
 # Running this repo
 You have multiple options to run the code:
--   [Deploy on Azure (WebApp + Batch Processing) with Azure Cognitive Search](#deploy-on-azure-webapp--batch-processing-with-azure-cognitive-search)
--   [Deploy on Azure (WebApp + Azure Cache for Redis + Batch Processing)](#deploy-on-azure-webapp--azure-cache-for-redis-enterprise--batch-processing)
--   [Deploy on Azure (WebApp + Redis Stack + Batch Processing)](#deploy-on-azure-webapp--redis-stack--batch-processing)
--   [Run everything locally in Docker (WebApp + Redis Stack + Batch Processing)](#run-everything-locally-in-docker-webapp--redis-stack--batch-processing)
--   [Run everything locally in Python with Conda (WebApp only)](#run-everything-locally-in-python-with-conda-webapp-only)
--   [Run everything locally in Python with venv](#run-everything-locally-in-python-with-venv)
--   [Run WebApp locally in Docker against an existing Redis deployment](#run-webapp-locally-in-docker-against-an-existing-redis-deployment)
+- [Azure OpenAI Embeddings QnA](#azure-openai-embeddings-qna)
+  - [Learning More about Enterprise QnA](#learning-more-about-enterprise-qna)
+- [IMPORTANT NOTE (OpenAI generated)](#important-note-openai-generated)
+- [Use the Repo with Chat based deployment (gpt-35-turbo or gpt-4-32k or gpt-4)](#use-the-repo-with-chat-based-deployment-gpt-35-turbo-or-gpt-4-32k-or-gpt-4)
+- [Running this repo](#running-this-repo)
+  - [Deploy on Azure (WebApp + Batch Processing) with Azure Cognitive Search](#deploy-on-azure-webapp--batch-processing-with-azure-cognitive-search)
+    - [Signing up for Vector Search Private Preview in Azure Cognitive Search](#signing-up-for-vector-search-private-preview-in-azure-cognitive-search)
+  - [Deploy on Azure (WebApp + Azure Cache for Redis Enterprise + Batch Processing)](#deploy-on-azure-webapp--azure-cache-for-redis-enterprise--batch-processing)
+  - [Deploy on Azure (WebApp + Redis Stack + Batch Processing)](#deploy-on-azure-webapp--redis-stack--batch-processing)
+  - [Run everything locally in Docker (WebApp + Redis Stack + Batch Processing)](#run-everything-locally-in-docker-webapp--redis-stack--batch-processing)
+  - [Run everything locally in Python with Conda (WebApp only)](#run-everything-locally-in-python-with-conda-webapp-only)
+  - [Run everything locally in Python with venv](#run-everything-locally-in-python-with-venv)
+  - [Run WebApp locally in Docker against an existing Redis deployment](#run-webapp-locally-in-docker-against-an-existing-redis-deployment)
+    - [Option 1 - Run the prebuilt Docker image](#option-1---run-the-prebuilt-docker-image)
+    - [Option 2 - Build the Docker image yourself](#option-2---build-the-docker-image-yourself)
+  - [Use the QnA API from the backend](#use-the-qna-api-from-the-backend)
+    - [Call the API with no history for QnA mode](#call-the-api-with-no-history-for-qna-mode)
+    - [Call the API with history for Chat mode](#call-the-api-with-history-for-chat-mode)
+  - [Environment variables](#environment-variables)
+- [DISCLAIMER](#disclaimer)
 
 ## Deploy on Azure (WebApp + Batch Processing) with Azure Cognitive Search
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fruoccofabrizio%2Fazure-open-ai-embeddings-qna%2Fmain%2Finfrastructure%2Fdeployment_ACS.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fadrn-mm%2Fazure-open-ai-embeddings-qna%2Fmain%2Finfrastructure%2Fdeployment_ACS.json)
 
 Click on the Deploy to Azure button and configure your settings in the Azure Portal as described in the [Environment variables](#environment-variables) section.
 
@@ -57,7 +70,7 @@ Preview functionality is provided under [Supplemental Terms of Use](https://azur
 
 
 ## Deploy on Azure (WebApp + Azure Cache for Redis Enterprise + Batch Processing)
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fruoccofabrizio%2Fazure-open-ai-embeddings-qna%2Fmain%2Finfrastructure%2FdeploymentACRE.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fadrn-mm%2Fazure-open-ai-embeddings-qna%2Fmain%2Finfrastructure%2FdeploymentACRE.json)
 
 Click on the Deploy to Azure button to automatically deploy a template on Azure by with the resources needed to run this example. This option will provision an instance of [Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-overview) with [RediSearch](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-redis-modules#redisearch) installed to store vectors and perform the similiarity search. 
 
@@ -72,7 +85,7 @@ Please be aware that you still need:
 You will add the endpoint and access key information for these resources when deploying the template. 
 
 ## Deploy on Azure (WebApp + Redis Stack + Batch Processing)
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fruoccofabrizio%2Fazure-open-ai-embeddings-qna%2Fmain%2Finfrastructure%2Fdeployment.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fadrn-mm%2Fazure-open-ai-embeddings-qna%2Fmain%2Finfrastructure%2Fdeployment.json)
 
 Click on the Deploy to Azure button and configure your settings in the Azure Portal as described in the [Environment variables](#environment-variables) section.
 
