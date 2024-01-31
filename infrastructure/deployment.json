@@ -177,7 +177,7 @@
   },
   "variables": {
     "ContainerImageName": "redis/redis-stack-server:latest",
-    "WebAppImageName": "DOCKER|adrianmaulana/web_app:latest",
+    "WebAppImageName": "DOCKER|adrianmaulana/chatbot_azure:latest",
     "BlobContainerName": "documents",
     "FileShareName": "redisdata",
     "QueueName": "doc-processing",
